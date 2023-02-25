@@ -50,6 +50,18 @@ class App extends Component {
     }));
   };
 
+  editContact = updateContact => {
+    this.setState(({ contacts }) => ({
+      contacts: contacts.map(contact => {
+        if (contact.id === updateContact.id) {
+          const newContact = { ...contact, ...updateContact };
+          return newContact;
+        }
+        return contact;
+      }),
+    }));
+  };
+
   changeFilter = evt => {
     this.setState({ filter: evt.currentTarget.value });
   };
@@ -75,6 +87,7 @@ class App extends Component {
         <ContactList
           contacts={this.filterList()}
           onDeleteContact={this.deleteContact}
+          onEditContact={this.editContact}
         />
         <GlobalStyle />
       </Container>
