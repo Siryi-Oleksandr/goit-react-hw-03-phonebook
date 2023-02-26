@@ -5,10 +5,10 @@ export const Controls = ({ id, onDeleteContact, onEditContact, isEdit }) => {
   return (
     <ControlWrapper>
       <Button type="button" onClick={() => onEditContact()}>
-        {isEdit ? 'Save1' : 'Edit1'}
+        Edit
       </Button>
       <Button type="button" onClick={() => onDeleteContact(id)}>
-        Delete1
+        Delete
       </Button>
     </ControlWrapper>
   );

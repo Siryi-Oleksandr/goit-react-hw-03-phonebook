@@ -8,9 +8,6 @@ import {
   ContactTel,
   ContactName,
   ContactInfo,
-  ContactEditInfo,
-  ContactEditLabel,
-  ContactEditInput,
 } from 'components/ContactItem/ContactItem.styled';
 import { Controls, ControlsSave } from 'components/Control/Controls';
 import EditForm from 'components/EditForm';
@@ -26,8 +23,12 @@ class ContactItem extends Component {
     if (!this.state.isEdit) {
       this.setState({ isEdit: true });
     } else {
-      this.setState({ isEdit: false });
-      console.log('😍 I am from Edit Form');
+      this.setState({
+        name: name ? name : this.props.name,
+        number: number ? number : this.props.number,
+        isEdit: false,
+      });
+
       this.props.onEditContact({
         id: this.props.id,
         name: name ? name : this.state.name,
@@ -64,7 +65,11 @@ class ContactItem extends Component {
 
         {/* if contact is edit show edit form */}
         {isEdit && (
-          <EditForm onEditContact={this.handleEditContact}>
+          <EditForm
+            name={name}
+            number={number}
+            onEditContact={this.handleEditContact}
+          >
             <ControlsSave
               id={id}
               onDeleteContact={onDeleteContact}
@@ -72,29 +77,6 @@ class ContactItem extends Component {
               isEdit={isEdit}
             />
           </EditForm>
-          // <ContactEditInfo>
-          //   <ContactEditLabel>
-          //     <HiUser fill="orangered" />
-          //     <ContactEditInput
-          //       type="text"
-          //       name="name"
-          //       value={name}
-          //       pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          //       onChange={this.handleChange}
-          //     />
-          //   </ContactEditLabel>
-
-          //   <ContactEditLabel>
-          //     <BsTelephoneFill fill="orangered" />
-          //     <ContactEditInput
-          //       type="tel"
-          //       name="number"
-          //       value={number}
-          //       pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          //       onChange={this.handleChange}
-          //     />
-          //   </ContactEditLabel>
-          // </ContactEditInfo>
         )}
 
         {!isEdit && (

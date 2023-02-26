@@ -73,7 +73,6 @@ class App extends Component {
     const visibleContacts = contacts.filter(contast =>
       contast.name.toLocaleLowerCase().includes(normalizedFilter)
     );
-    console.log(visibleContacts);
     return visibleContacts;
   };
 

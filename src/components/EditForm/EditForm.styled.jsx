@@ -3,8 +3,10 @@ import { Form, Field } from 'formik';
 
 export const EditFormStyled = styled(Form)`
   display: flex;
-  flex-direction: column;
-  gap: 5px;
+  /* flex-direction: column;
+  gap: 5px; */
+
+  width: 100%;
 `;
 
 export const EditFormLabel = styled.label`
@@ -17,40 +19,26 @@ export const EditFormLabel = styled.label`
   font-size: 12px;
 `;
 export const EditInput = styled(Field)`
-  border: 1px solid orangered;
+  width: 180px;
+  border: 1px solid #1664e2;
   border-radius: 4px;
-  outline: 1px solid orangered;
+  outline: 1px solid #1664e2;
 `;
 
-// export const Button = styled.button`
-//   padding: 5px;
-//   width: 200px;
-//   border: 1px solid #1664e2;
-//   border-radius: 4px;
-//   outline: none;
-//   font-size: 18px;
-//   font-weight: 600;
-//   cursor: pointer;
-
-//   transition: all 250ms ease-in-out;
-
-//   &:hover,
-//   &:focus {
-//     box-shadow: rgba(22, 100, 226, 0.24) 0px 3px 8px;
-//     background-color: rgba(22, 144, 226, 0.737);
-//     border-color: transparent;
-//     color: #fff;
-//   }
-// `;
+export const EditFormWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
 
 export const CustomError = styled.div`
   position: absolute;
-  top: 100%;
-  left: 0;
+  top: 0;
+  left: 100%;
   padding: 3px;
-  width: 160px;
+  width: 110px;
   border: 1px solid red;
   border-radius: 4px;
   color: red;
-  font-size: 12px;
+  font-size: 8px;
 `;

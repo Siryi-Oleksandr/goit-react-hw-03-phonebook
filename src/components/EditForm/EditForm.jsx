@@ -16,10 +16,10 @@ import {
   EditInput,
   EditFormLabel,
   CustomError,
+  EditFormWrapper,
 } from './EditForm.styled';
 import { ControlsSave } from 'components/Control/Controls';
 
-const initialValues = { name: '', number: '' };
 const nameRegExp = /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 const phoneRegExp =
   /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/;
@@ -31,38 +31,39 @@ let userValidSchema = object({
     .required(),
 });
 
-export const EditForm = ({ onEditContact, children }) => {
+export const EditForm = ({ name, number, onEditContact, children }) => {
   const handleSubmit = (values, { resetForm }) => {
     const { name, number } = values;
-    console.log('😎');
     onEditContact(name, number);
     resetForm();
   };
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={{ name, number }}
       validationSchema={userValidSchema}
       onSubmit={handleSubmit}
     >
       <EditFormStyled autoComplete="off">
-        <EditFormLabel>
-          <HiUser fill="green" />
-          <EditInput
-            type="text"
-            name="name"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          />
-          <ErrorMessage component={CustomError} name="name" />
-        </EditFormLabel>
-        <EditFormLabel>
-          <BsTelephoneFill fill="green" />
-          <EditInput
-            type="tel"
-            name="number"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          />
-          <ErrorMessage component={CustomError} name="number" />
-        </EditFormLabel>
+        <EditFormWrapper>
+          <EditFormLabel>
+            <HiUser fill="#1664e2" />
+            <EditInput
+              type="text"
+              name="name"
+              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            />
+            <ErrorMessage component={CustomError} name="name" />
+          </EditFormLabel>
+          <EditFormLabel>
+            <BsTelephoneFill fill="#1664e2" />
+            <EditInput
+              type="tel"
+              name="number"
+              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            />
+            <ErrorMessage component={CustomError} name="number" />
+          </EditFormLabel>
+        </EditFormWrapper>
         {children}
       </EditFormStyled>
     </Formik>
