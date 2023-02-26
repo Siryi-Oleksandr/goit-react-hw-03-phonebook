@@ -1,12 +1,28 @@
 import PropTypes from 'prop-types';
 import { ControlWrapper, Button } from 'components/Control/Controls.styled';
 
-const Controls = ({ id, onDeleteContact, onEditContact, isEdit }) => {
+export const Controls = ({ id, onDeleteContact, onEditContact, isEdit }) => {
   return (
     <ControlWrapper>
       <Button type="button" onClick={() => onEditContact()}>
-        {isEdit ? 'Save' : 'Edit'}
+        {isEdit ? 'Save1' : 'Edit1'}
       </Button>
+      <Button type="button" onClick={() => onDeleteContact(id)}>
+        Delete1
+      </Button>
+    </ControlWrapper>
+  );
+};
+
+export const ControlsSave = ({
+  id,
+  onDeleteContact,
+  onEditContact,
+  isEdit,
+}) => {
+  return (
+    <ControlWrapper>
+      <Button type="submit">Save</Button>
       <Button type="button" onClick={() => onDeleteContact(id)}>
         Delete
       </Button>
@@ -21,4 +37,4 @@ Controls.propTypes = {
   id: PropTypes.string.isRequired,
 };
 
-export default Controls;
+// export { Controls, ControlsSave };

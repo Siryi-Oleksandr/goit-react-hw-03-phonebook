@@ -12,7 +12,8 @@ import {
   ContactEditLabel,
   ContactEditInput,
 } from 'components/ContactItem/ContactItem.styled';
-import Controls from 'components/Control/Controls';
+import { Controls, ControlsSave } from 'components/Control/Controls';
+import EditForm from 'components/EditForm';
 
 class ContactItem extends Component {
   state = {
@@ -21,15 +22,16 @@ class ContactItem extends Component {
     isEdit: false,
   };
 
-  handleEditContact = () => {
+  handleEditContact = (name, number) => {
     if (!this.state.isEdit) {
       this.setState({ isEdit: true });
     } else {
       this.setState({ isEdit: false });
+      console.log('😍 I am from Edit Form');
       this.props.onEditContact({
         id: this.props.id,
-        name: this.state.name,
-        number: this.state.number,
+        name: name ? name : this.state.name,
+        number: number ? number : this.state.number,
       });
     }
   };
@@ -62,37 +64,47 @@ class ContactItem extends Component {
 
         {/* if contact is edit show edit form */}
         {isEdit && (
-          <ContactEditInfo>
-            <ContactEditLabel>
-              <HiUser fill="orangered" />
-              <ContactEditInput
-                type="text"
-                name="name"
-                value={name}
-                pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                onChange={this.handleChange}
-              />
-            </ContactEditLabel>
+          <EditForm onEditContact={this.handleEditContact}>
+            <ControlsSave
+              id={id}
+              onDeleteContact={onDeleteContact}
+              onEditContact={this.handleEditContact}
+              isEdit={isEdit}
+            />
+          </EditForm>
+          // <ContactEditInfo>
+          //   <ContactEditLabel>
+          //     <HiUser fill="orangered" />
+          //     <ContactEditInput
+          //       type="text"
+          //       name="name"
+          //       value={name}
+          //       pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          //       onChange={this.handleChange}
+          //     />
+          //   </ContactEditLabel>
 
-            <ContactEditLabel>
-              <BsTelephoneFill fill="orangered" />
-              <ContactEditInput
-                type="tel"
-                name="number"
-                value={number}
-                pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-                onChange={this.handleChange}
-              />
-            </ContactEditLabel>
-          </ContactEditInfo>
+          //   <ContactEditLabel>
+          //     <BsTelephoneFill fill="orangered" />
+          //     <ContactEditInput
+          //       type="tel"
+          //       name="number"
+          //       value={number}
+          //       pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          //       onChange={this.handleChange}
+          //     />
+          //   </ContactEditLabel>
+          // </ContactEditInfo>
         )}
 
-        <Controls
-          id={id}
-          onDeleteContact={onDeleteContact}
-          onEditContact={this.handleEditContact}
-          isEdit={isEdit}
-        />
+        {!isEdit && (
+          <Controls
+            id={id}
+            onDeleteContact={onDeleteContact}
+            onEditContact={this.handleEditContact}
+            isEdit={isEdit}
+          />
+        )}
       </Item>
     );
   }
