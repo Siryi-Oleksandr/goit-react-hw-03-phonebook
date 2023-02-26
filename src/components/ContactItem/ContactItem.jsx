@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { HiUser } from 'react-icons/hi';
-import { BsTelephoneFill } from 'react-icons/bs';
+import { ImPhone } from 'react-icons/im';
 
 import {
   Item,
@@ -57,7 +57,7 @@ class ContactItem extends Component {
             </ContactName>
 
             <ContactTel>
-              <BsTelephoneFill />
+              <ImPhone />
               {number}
             </ContactTel>
           </ContactInfo>

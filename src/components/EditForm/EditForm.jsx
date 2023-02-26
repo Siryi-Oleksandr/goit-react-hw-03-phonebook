@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { HiUser } from 'react-icons/hi';
-import { BsTelephoneFill } from 'react-icons/bs';
+import { ImPhone } from 'react-icons/im';
 // import {
 //   FormStyled,
 //   FormLabel,
@@ -55,7 +55,7 @@ export const EditForm = ({ name, number, onEditContact, children }) => {
             <ErrorMessage component={CustomError} name="name" />
           </EditFormLabel>
           <EditFormLabel>
-            <BsTelephoneFill fill="#1664e2" />
+            <ImPhone fill="#1664e2" />
             <EditInput
               type="tel"
               name="number"

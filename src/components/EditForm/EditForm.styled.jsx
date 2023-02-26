@@ -3,8 +3,7 @@ import { Form, Field } from 'formik';
 
 export const EditFormStyled = styled(Form)`
   display: flex;
-  /* flex-direction: column;
-  gap: 5px; */
+  align-items: center;
 
   width: 100%;
 `;
@@ -28,7 +27,7 @@ export const EditInput = styled(Field)`
 export const EditFormWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 4px;
 `;
 
 export const CustomError = styled.div`

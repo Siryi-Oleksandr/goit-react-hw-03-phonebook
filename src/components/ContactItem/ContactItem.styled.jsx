@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Item = styled.li`
   min-width: 380px;
   display: flex;
-  /* gap: 10px; */
+  align-items: center;
 
   &:not(:last-child) {
     margin-bottom: 5px;
