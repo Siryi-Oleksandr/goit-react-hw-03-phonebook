@@ -40,7 +40,7 @@ class ContactItem extends Component {
   };
 
   render() {
-    const { id, onDeleteContact, onEditContact } = this.props;
+    const { id, onDeleteContact } = this.props;
     const { isEdit, name, number } = this.state;
     return (
       <Item>
@@ -66,20 +66,22 @@ class ContactItem extends Component {
             <ContactEditLabel>
               <HiUser fill="orangered" />
               <ContactEditInput
-                name="name"
-                onChange={this.handleChange}
-                value={name}
                 type="text"
+                name="name"
+                value={name}
+                pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+                onChange={this.handleChange}
               />
             </ContactEditLabel>
 
             <ContactEditLabel>
               <BsTelephoneFill fill="orangered" />
               <ContactEditInput
+                type="tel"
                 name="number"
-                onChange={this.handleChange}
                 value={number}
-                type="text"
+                pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+                onChange={this.handleChange}
               />
             </ContactEditLabel>
           </ContactEditInfo>

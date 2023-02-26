@@ -54,8 +54,9 @@ class App extends Component {
     this.setState(({ contacts }) => ({
       contacts: contacts.map(contact => {
         if (contact.id === updateContact.id) {
-          const newContact = { ...contact, ...updateContact };
-          return newContact;
+          return updateContact;
+          // const newContact = { ...contact, ...updateContact };
+          // return newContact;
         }
         return contact;
       }),

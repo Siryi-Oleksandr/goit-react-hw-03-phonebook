@@ -33,7 +33,7 @@ export const ContactTel = styled.p`
   font-size: 14px;
 `;
 
-export const ContactEditInfo = styled.div`
+export const ContactEditInfo = styled.form`
   /* min-width: 380px; */
   display: flex;
   flex-direction: column;

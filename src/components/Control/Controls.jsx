@@ -15,8 +15,10 @@ const Controls = ({ id, onDeleteContact, onEditContact, isEdit }) => {
 };
 
 Controls.propTypes = {
-  //   onDeleteContact: PropTypes.func.isRequired,
-  //   onEditContact: PropTypes.func.isRequired,
+  onDeleteContact: PropTypes.func.isRequired,
+  onEditContact: PropTypes.func.isRequired,
+  isEdit: PropTypes.bool.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default Controls;
