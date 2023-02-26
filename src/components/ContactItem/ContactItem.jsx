@@ -70,12 +70,7 @@ class ContactItem extends Component {
             number={number}
             onEditContact={this.handleEditContact}
           >
-            <ControlsSave
-              id={id}
-              onDeleteContact={onDeleteContact}
-              onEditContact={this.handleEditContact}
-              isEdit={isEdit}
-            />
+            <ControlsSave id={id} onDeleteContact={onDeleteContact} />
           </EditForm>
         )}
 
@@ -84,7 +79,6 @@ class ContactItem extends Component {
             id={id}
             onDeleteContact={onDeleteContact}
             onEditContact={this.handleEditContact}
-            isEdit={isEdit}
           />
         )}
       </Item>

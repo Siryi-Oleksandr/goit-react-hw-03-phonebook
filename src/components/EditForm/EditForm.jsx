@@ -2,13 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { HiUser } from 'react-icons/hi';
 import { ImPhone } from 'react-icons/im';
-// import {
-//   FormStyled,
-//   FormLabel,
-//   Input,
-//   Button,
-//   CustomError,
-// } from './ContactForm.styled';
 import { Formik, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
 import {
@@ -18,7 +11,6 @@ import {
   CustomError,
   EditFormWrapper,
 } from './EditForm.styled';
-import { ControlsSave } from 'components/Control/Controls';
 
 const nameRegExp = /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 const phoneRegExp =
@@ -71,7 +63,10 @@ export const EditForm = ({ name, number, onEditContact, children }) => {
 };
 
 EditForm.propTypes = {
-  //   onAddContact: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+  children: PropTypes.node,
+  onEditContact: PropTypes.func.isRequired,
 };
 
 export default EditForm;

@@ -28,6 +28,4 @@ export const ControlWrapper = styled.div`
   display: flex;
   gap: 10px;
   margin-left: auto;
-  /* padding: 5px;
-  width: 180px; */
 `;
