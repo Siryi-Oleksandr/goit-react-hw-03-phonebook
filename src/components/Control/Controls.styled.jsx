@@ -3,11 +3,12 @@ import styled from 'styled-components';
 export const Button = styled.button`
   /* margin-left: auto; */
   padding: 5px;
-  width: 80px;
+  width: 60px;
   border: 1px solid #1664e2;
   border-radius: 4px;
   outline: none;
-  font-size: 12px;
+  font-size: 14px;
+  font-weight: 600;
 
   cursor: pointer;
 

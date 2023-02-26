@@ -4,7 +4,7 @@ import { ControlWrapper, Button } from 'components/Control/Controls.styled';
 const Controls = ({ id, onDeleteContact, onEditContact, isEdit }) => {
   return (
     <ControlWrapper>
-      <Button type="button" onClick={() => console.log('😁')}>
+      <Button type="button" onClick={() => onEditContact()}>
         {isEdit ? 'Save' : 'Edit'}
       </Button>
       <Button type="button" onClick={() => onDeleteContact(id)}>

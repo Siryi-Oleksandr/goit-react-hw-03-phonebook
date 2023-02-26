@@ -1,8 +1,17 @@
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { HiUser } from 'react-icons/hi';
-import { Component } from 'react';
+import { BsTelephoneFill } from 'react-icons/bs';
 
-import { Item, ContactInfo } from 'components/ContactItem/ContactItem.styled';
+import {
+  Item,
+  ContactTel,
+  ContactName,
+  ContactInfo,
+  ContactEditInfo,
+  ContactEditLabel,
+  ContactEditInput,
+} from 'components/ContactItem/ContactItem.styled';
 import Controls from 'components/Control/Controls';
 
 class ContactItem extends Component {
@@ -17,7 +26,7 @@ class ContactItem extends Component {
       this.setState({ isEdit: true });
     } else {
       this.setState({ isEdit: false });
-      this.props.editContact({
+      this.props.onEditContact({
         id: this.props.id,
         name: this.state.name,
         number: this.state.number,
@@ -35,36 +44,47 @@ class ContactItem extends Component {
     const { isEdit, name, number } = this.state;
     return (
       <Item>
-        {/* {isEdit ? (
-          <label>
-            Name:
-            <input
-              name="name"
-              onChange={this.handleChange}
-              value={name}
-              type="text"
-            />
-          </label>
-        ) : (
-          <p>Name: 😎</p>
+        {/* if contact saved show contact info */}
+
+        {!isEdit && (
+          <ContactInfo>
+            <ContactName>
+              <HiUser />
+              {name}:
+            </ContactName>
+
+            <ContactTel>
+              <BsTelephoneFill />
+              {number}
+            </ContactTel>
+          </ContactInfo>
         )}
-        {isEdit ? (
-          <label>
-            Number:
-            <input
-              name="number"
-              onChange={this.handleChange}
-              value={number}
-              type="text"
-            />
-          </label>
-        ) : (
-          <p>Number: 😍</p>
-        )} */}
-        <HiUser />
-        <ContactInfo>
-          {name}: {number}
-        </ContactInfo>
+
+        {/* if contact is edit show edit form */}
+        {isEdit && (
+          <ContactEditInfo>
+            <ContactEditLabel>
+              <HiUser fill="orangered" />
+              <ContactEditInput
+                name="name"
+                onChange={this.handleChange}
+                value={name}
+                type="text"
+              />
+            </ContactEditLabel>
+
+            <ContactEditLabel>
+              <BsTelephoneFill fill="orangered" />
+              <ContactEditInput
+                name="number"
+                onChange={this.handleChange}
+                value={number}
+                type="text"
+              />
+            </ContactEditLabel>
+          </ContactEditInfo>
+        )}
+
         <Controls
           id={id}
           onDeleteContact={onDeleteContact}
@@ -81,6 +101,7 @@ ContactItem.propTypes = {
   number: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   onDeleteContact: PropTypes.func.isRequired,
+  onEditContact: PropTypes.func.isRequired,
 };
 
 export default ContactItem;
